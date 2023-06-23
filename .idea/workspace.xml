@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3c0b196f-57aa-4cde-a34b-64425a76e0df" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="3c0b196f-57aa-4cde-a34b-64425a76e0df" name="Changes" comment="corrected MimeMessage for sending. &#10;add sending email with an attachment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/ChuprinaVlad/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/ChuprinaVlad/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/emails.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/emails.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +52,24 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="d2194a65-8c4c-48e2-92b3-d469abe9131d" />
+        <option name="url" value="https://github.com/ChuprinaVlad/emails-sender.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2RO5n2G1x1L3BSVMc9TC36WTG25" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -80,6 +93,14 @@
       <option name="presentableId" value="Default" />
       <updated>1687108463563</updated>
     </task>
+    <task id="LOCAL-00001" summary="corrected MimeMessage for sending. &#10;add sending email with an attachment">
+      <created>1687354678600</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1687354678600</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -92,6 +113,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="corrected MimeMessage for sending. &#10;add sending email with an attachment" />
+    <option name="LAST_COMMIT_MESSAGE" value="corrected MimeMessage for sending. &#10;add sending email with an attachment" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

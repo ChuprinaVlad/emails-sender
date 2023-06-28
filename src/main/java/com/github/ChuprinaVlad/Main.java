@@ -8,6 +8,7 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class Main {
@@ -15,6 +16,7 @@ public class Main {
 
         final String  username = "testvlad.123456@gmail.com";
         final String password = "bxohylduhunadzbl";
+        final String EMAILS_CSV = "emails.csv";
 
         Properties prop = new Properties();
         prop.put("mail.smtp.auth", "true");
@@ -40,7 +42,10 @@ public class Main {
                 Message.RecipientType.TO, InternetAddress.parse("kolegran@gmail.com"));
         message.setSubject("Mail Subject");
 
-        String msg = "This is my first email using JavaMailer";
+        InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(EMAILS_CSV);
+        System.out.println(inputStream);
+
+        String msg = "This is my second email using JavaMailer";
 
         MimeBodyPart mimeBodyPart = new MimeBodyPart();
         mimeBodyPart.setContent(msg, "text/html; charset=utf-8");
@@ -48,13 +53,13 @@ public class Main {
         Multipart multipart = new MimeMultipart();
         multipart.addBodyPart(mimeBodyPart);
 
+
         MimeBodyPart attachmentBodyPart = new MimeBodyPart();
-        attachmentBodyPart.attachFile(new File("C:/Users/Влад/IdeaProjects/emails-sender/src/main/" +
-                "java/com/github/ChuprinaVlad/smile.jpg"));
+        attachmentBodyPart.attachFile(new File("smile.jpg"));
         multipart.addBodyPart(attachmentBodyPart);
 
         message.setContent(multipart);
 
-        Transport.send(message);
+  //      Transport.send(message);
     }
 }

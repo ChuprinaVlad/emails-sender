@@ -8,15 +8,14 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.util.Properties;
 
 public class Main {
-    public static void main(String[] args) throws MessagingException, IOException {
+    public static void main(String[] args) throws MessagingException, IOException, URISyntaxException {
 
         final String  username = "testvlad.123456@gmail.com";
         final String password = "bxohylduhunadzbl";
-        final String EMAILS_CSV = "emails.csv";
 
         Properties prop = new Properties();
         prop.put("mail.smtp.auth", "true");
@@ -37,13 +36,10 @@ public class Main {
         });
 
         Message message = new MimeMessage(session);
-        message.setFrom(new InternetAddress("testvlad.123456@gmail.com"));
+        message.setFrom(new InternetAddress(username));
         message.setRecipients(
-                Message.RecipientType.TO, InternetAddress.parse("kolegran@gmail.com"));
+                Message.RecipientType.TO, InternetAddress.parse("kolegran@gmail.com, kolegran+1@gmail.com"));
         message.setSubject("Mail Subject");
-
-        InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(EMAILS_CSV);
-        System.out.println(inputStream);
 
         String msg = "This is my second email using JavaMailer";
 
@@ -55,11 +51,17 @@ public class Main {
 
 
         MimeBodyPart attachmentBodyPart = new MimeBodyPart();
-        attachmentBodyPart.attachFile(new File("smile.jpg"));
-        multipart.addBodyPart(attachmentBodyPart);
+        var res  = Main.class.getClassLoader().getResource("smile.jpg");
 
-        message.setContent(multipart);
+        if (res != null) {
+            var file = new File(res.toURI());
+            attachmentBodyPart.attachFile(file);
+            multipart.addBodyPart(attachmentBodyPart);
 
-  //      Transport.send(message);
+            message.setContent(multipart);
+
+            Transport.send(message);
+        }
+
     }
 }

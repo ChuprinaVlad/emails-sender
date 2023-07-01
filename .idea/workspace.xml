@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3c0b196f-57aa-4cde-a34b-64425a76e0df" name="Changes" comment="test">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/smile.jpg" afterDir="false" />
+    <list default="true" id="3c0b196f-57aa-4cde-a34b-64425a76e0df" name="Changes" comment="corrected file path jpeg">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/ChuprinaVlad/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/ChuprinaVlad/Main.java" afterDir="false" />
     </list>
@@ -143,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687987552026</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="corrected file path jpeg">
+      <created>1688220609696</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1688220609696</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -164,9 +170,19 @@
     <MESSAGE value="changet the location of the fili in resouces" />
     <MESSAGE value="error - exporting a package from system module jdk.jfr is not allowed with --release" />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="corrected file path jpeg" />
+    <option name="LAST_COMMIT_MESSAGE" value="corrected file path jpeg" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/github/ChuprinaVlad/Main.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="mimeBodyPart" />

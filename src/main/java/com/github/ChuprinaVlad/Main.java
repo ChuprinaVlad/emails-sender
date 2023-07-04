@@ -1,7 +1,12 @@
 package com.github.ChuprinaVlad;
 
 
-import javax.mail.*;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
@@ -11,14 +16,22 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Properties;
 
+// TODO: remove this class after refactoring
 public class Main {
-    public static void main(String[] args) throws MessagingException, IOException, URISyntaxException {
 
-        final String  username = "testvlad.123456@gmail.com";
+    // TODO: handle exceptions with try-catch. Use custom exceptions - https://www.baeldung.com/java-new-custom-exception
+    //  extend from RuntimeException, not from Exception as in guide
+    public static void main(String[] args) throws MessagingException, IOException, URISyntaxException {
+        final String username = "testvlad.123456@gmail.com";
+
+        // TODO: add as environment variable in 'Edit Configurations', read using
+        //  String password = System.getenv().getOrDefault("EMAIL_PASSWORD", "");
         final String password = "bxohylduhunadzbl";
+
         final String [] emails = new String[] {"kolegran@gmail.com", "kolegran+1@gmail.com", "kolegran+2@gmail.com"};
         String email, msg = null;
 
+        // TODO: move properties and session to SessionProvider
         Properties prop = new Properties();
         prop.put("mail.smtp.auth", "true");
         prop.put("mail.smtp.starttls.enable", "true");
@@ -30,15 +43,13 @@ public class Main {
         prop.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 
         Session session = Session.getInstance(prop, new javax.mail.Authenticator() {
-
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(username, password);
             }
         });
 
-
-
+        // TODO: move emails sending logic to EmailSender
         Message message = new MimeMessage(session);
         message.setFrom(new InternetAddress(username));
 
@@ -68,12 +79,11 @@ public class Main {
             Multipart multipart = new MimeMultipart();
             multipart.addBodyPart(mimeBodyPart);
 
-
             MimeBodyPart attachmentBodyPart = new MimeBodyPart();
             var res = Main.class.getClassLoader().getResource("smile.jpg");
 
             if (res != null) {
-                var file = new File(res.toURI());
+                var file = new File(res.toURI()); // TODO: var best practices
                 attachmentBodyPart.attachFile(file);
                 multipart.addBodyPart(attachmentBodyPart);
 
@@ -82,6 +92,5 @@ public class Main {
                 Transport.send(message);
             }
         }
-
     }
 }

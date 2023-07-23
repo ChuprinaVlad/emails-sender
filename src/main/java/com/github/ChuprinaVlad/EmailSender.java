@@ -1,10 +1,7 @@
 package com.github.ChuprinaVlad;
 
 import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
+import javax.mail.internet.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -21,7 +18,7 @@ public class EmailSender {
         this.userDataCsvParser = userDataCsvParser;
     }
 
-    public void send() {
+    public void send() throws MessagingException {
         Session session = sessionProvider.getSession();
         List<UserData> userData = userDataCsvParser.parse();
 
@@ -34,7 +31,7 @@ public class EmailSender {
 
         for (UserData data : userData) {
             String msg = "Hi" + data.getName() + ", this is my first email using JavaMailer";
-            String email = data.getEmail();
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(data.getEmail()));
 
             MimeBodyPart mimeBodyPart = new MimeBodyPart();
             try {

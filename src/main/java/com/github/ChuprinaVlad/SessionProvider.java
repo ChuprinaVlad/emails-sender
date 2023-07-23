@@ -6,10 +6,12 @@ import java.util.Properties;
 
 public class SessionProvider {
 
-    final public String username = "testvlad.123456@gmail.com";
-    final public String password = "bxohylduhunadzbl";
-    public SessionProvider() {
-        Properties prop = new Properties();
+//    final public String username = "testvlad.123456@gmail.com";
+//    final public String password = "bxohylduhunadzbl";
+
+    public Properties prop = new Properties();
+
+    {
         prop.put("mail.smtp.auth", "true");
         prop.put("mail.smtp.starttls.enable", "true");
         prop.put("mail.smtp.host", "smtp.gmail.com");
@@ -21,13 +23,11 @@ public class SessionProvider {
     }
 
     public Session getSession() {
-        Properties prop = new Properties();
-        Session session = Session.getInstance(prop, new javax.mail.Authenticator() {
+        return Session.getInstance(prop, new javax.mail.Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(username, password);
+                return new PasswordAuthentication(System.getenv("username"), System.getenv("password"));
             }
         });
-        return session;
     }
 }

@@ -1,8 +1,13 @@
 package com.github.ChuprinaVlad;
 
+import com.opencsv.bean.CsvBindByPosition;
+
 public class UserData {
 
+    @CsvBindByPosition(position = 0)
     private String name;
+
+    @CsvBindByPosition(position = 1)
     private String email;
 
     public String getName() {

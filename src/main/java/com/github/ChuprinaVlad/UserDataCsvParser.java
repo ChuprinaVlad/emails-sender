@@ -1,35 +1,35 @@
 package com.github.ChuprinaVlad;
 
-import com.opencsv.CSVReader;
-import com.opencsv.exceptions.CsvException;
+import com.opencsv.bean.CsvToBeanBuilder;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
-import java.net.URL;
-import java.util.Arrays;
+import java.net.URISyntaxException;
+import java.nio.file.Paths;
 import java.util.List;
 
 public class UserDataCsvParser {
 
+
     public List<UserData> parse() {
-        URL fileCsv = getClass().getClassLoader().getResource("emails.csv");
+        var fileCsv = getClass().getClassLoader().getResource("emails.csv");
         // TODO: write CSV parsing logic - https://mkyong.com/java/how-to-read-and-parse-csv-file-in-java/
         //  and remove this return statement
-        try (CSVReader reader = new CSVReader(new FileReader(String.valueOf(fileCsv)))) {
-            List<String[]> r = null;
-            try {
-                r = reader.readAll();
-            } catch (CsvException e) { //error reading file
-                throw new RuntimeException(e);//failed validator
-            }
-            r.forEach(x -> Arrays.toString(x));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e); // FileReader
-        } catch (IOException e) {
-            throw new RuntimeException(e); // FileReader
+        File file = null;
+        try {
+            file = Paths.get(fileCsv.toURI()).toFile();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
         }
-
-        return null;
+        try {
+            return new CsvToBeanBuilder(new FileReader(file))
+                    .withType(UserData.class)
+                    .withSkipLines(1)
+                    .build()
+                    .parse();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException("errors related to accessing the file",e);
+        }
     }
 }

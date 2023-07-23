@@ -24,7 +24,7 @@ public class EmailSender {
 
         Message message = new MimeMessage(session);
         try {
-            message.setFrom(new InternetAddress("testvlad.123456@gmail.com"));
+            message.setFrom(new InternetAddress(System.getenv("username")));
         } catch (MessagingException e) {
             throw new RuntimeException("Incorrect user email ",e);
         }
